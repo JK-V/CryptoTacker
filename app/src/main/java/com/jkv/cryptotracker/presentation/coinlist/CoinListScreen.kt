@@ -37,9 +37,11 @@ fun CoinListScreen(
                         })
             }
         }
+
         if (state.isLoading) {
             CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         }
+
         if (state.errorMsg > 0) {
             Text(
                 text = stringResource(id = state.errorMsg),

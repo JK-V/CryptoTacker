@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 fun CoinTag(
     tag: String
 ) {
-
     Box(
         modifier = Modifier
             .border(

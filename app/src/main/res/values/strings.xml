@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CryptoTracker</string>
+
+    <string name="unexpected_error_msg">An unexpected error occurred.</string>
+    <string name="tags">Tags</string>
+    <string name="active">Active</string>
+    <string name="inactive">Inactive</string>
+    <string name="team_members">Team members</string>
+</resources>

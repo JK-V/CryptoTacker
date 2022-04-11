@@ -31,7 +31,11 @@ fun CoinDetailScreen(
     viewModel: CoinDetailViewModel = hiltViewModel()
 ) {
     val state = viewModel.coinDetailState.value
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(10.dp)
+    ) {
         state.coin?.let { coin ->
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 item {

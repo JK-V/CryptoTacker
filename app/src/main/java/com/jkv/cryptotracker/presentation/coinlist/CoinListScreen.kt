@@ -1,9 +1,6 @@
 package com.jkv.cryptotracker.presentation.coinlist
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
@@ -19,22 +16,34 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.jkv.cryptotracker.presentation.Screen
 import com.jkv.cryptotracker.presentation.coinlist.components.CoinListItem
+import com.jkv.cryptotracker.presentation.coinlist.components.TopBar
 
 
 @Composable
 fun CoinListScreen(
     navController: NavController,
-    viewModel: CoinListViewModel = hiltViewModel()
+    viewModel: CoinListViewModel = hiltViewModel(),
+    toggleTheme: () -> Unit
 ) {
     val state = viewModel.coinsListState.value
     Box(modifier = Modifier.fillMaxSize()) {
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(state.coins) { coin ->
+        Column(modifier = Modifier.fillMaxSize()) {
+            Row {
+                TopBar(
+                    onToggle = {
+                        toggleTheme()
+                    }
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+            }
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                items(state.coins) { coin ->
                     CoinListItem(
                         coin = coin,
                         onItemClick = {
                             navController.navigate(Screen.CoinDetailScreen.route + "/${coin.id}")
                         })
+                }
             }
         }
 
